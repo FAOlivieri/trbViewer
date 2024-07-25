@@ -6,11 +6,11 @@ This VSCode extension displays pickled json files with the trb extension generat
 
 The extension will unpickle and display any files with .trb extension opened in VSCode.
 
+I recommend setting binary default editor in VSCode settings to "default" to avoid the binary file warning.
+
 ## Requirements
 
-Requires python with numpy in the global path
-
-I recommend setting binary default editor in VSCode settings to "default" to avoid the binary file warning.
+Requires python with numpy. Looks at the VSCode default interpreter
 
 ## Extension Settings
 
