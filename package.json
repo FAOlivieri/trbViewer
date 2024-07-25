@@ -24,6 +24,10 @@
           }
       ]
   },
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/FAOlivieri/trbViewer.git"
+    },
   "scripts": {
       "vscode:prepublish": "npm run compile",
       "compile": "tsc -p ./",
