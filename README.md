@@ -8,6 +8,8 @@ The extension will unpickle and display any files with .trb extension opened in 
 
 ## Requirements
 
+Requires python with numpy in the global path
+
 I recommend setting binary default editor in VSCode settings to "default" to avoid the binary file warning.
 
 ## Extension Settings
