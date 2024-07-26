@@ -14,14 +14,28 @@ export function activate(context: vscode.ExtensionContext) {
 
     vscode.workspace.onDidOpenTextDocument(document => {
         if (document.fileName.endsWith('.trb')) {
-            onTrbFileChanged(document.uri);
+            const document_uri=document.uri;
+
+            vscode.window.showTextDocument(document.uri, {preview: true, preserveFocus: false})
+            .then(() => {
+                return vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+            });
+            onTrbFileChanged(document_uri);
+            
         }
     });
 
     // Check for any already open .trb files and run the command
     vscode.workspace.textDocuments.forEach(document => {
         if (document.fileName.endsWith('.trb')) {
-            onTrbFileChanged(document.uri);
+            const document_uri=document.uri;
+
+            vscode.window.showTextDocument(document.uri, {preview: true, preserveFocus: false})
+            .then(() => {
+                return vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+            });
+            onTrbFileChanged(document_uri);
+            
         }
     });
 }
@@ -42,20 +56,18 @@ function onTrbFileChanged(uri: vscode.Uri) {
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
-            displayOutput(`Error: ${stderr}`);
+            displayOutput(`Error: ${stderr}`,filePath.toString());
             return;
         }
-        displayOutput(stdout);
+        displayOutput(stdout, filePath.toString());
     });
 }
 
-function displayOutput(output: string) {
+function displayOutput(output: string, filename: string) {
     vscode.workspace.openTextDocument({ content: output, language: 'plaintext' })
         .then(document => {
             return vscode.window.showTextDocument(document);
-        })
-        .then(() => {
-        });
+       });
 
 }
 
