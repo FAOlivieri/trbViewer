@@ -7,26 +7,12 @@ export function activate(context: vscode.ExtensionContext) {
     const trbWatcher = vscode.workspace.createFileSystemWatcher('**/*.trb');
     
     // Register the event for when a .trb file is opened or changed
-    trbWatcher.onDidChange(onTrbFileChanged);
-    trbWatcher.onDidCreate(onTrbFileChanged);
+    //trbWatcher.onDidChange(onTrbFileChanged);
+    //trbWatcher.onDidCreate(onTrbFileChanged);
 
-    context.subscriptions.push(trbWatcher);
+    //context.subscriptions.push(trbWatcher);
 
     vscode.workspace.onDidOpenTextDocument(document => {
-        if (document.fileName.endsWith('.trb')) {
-            const document_uri=document.uri;
-
-            vscode.window.showTextDocument(document.uri, {preview: true, preserveFocus: false})
-            .then(() => {
-                return vscode.commands.executeCommand('workbench.action.closeActiveEditor');
-            });
-            onTrbFileChanged(document_uri);
-            
-        }
-    });
-
-    // Check for any already open .trb files and run the command
-    vscode.workspace.textDocuments.forEach(document => {
         if (document.fileName.endsWith('.trb')) {
             const document_uri=document.uri;
 
